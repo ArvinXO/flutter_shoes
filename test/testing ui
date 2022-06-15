@@ -1,0 +1,6 @@
+                    ColorFiltered(
+                      colorFilter: ColorFilter.mode(
+                        widget.shoes.listImage[valueIndexColor].color
+                            .withOpacity(0.9),
+                        BlendMode.modulate,
+                      ),
