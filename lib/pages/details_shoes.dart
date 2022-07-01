@@ -160,7 +160,7 @@ class _DetailsShoesPageState extends State<DetailsShoesPage> {
                             fontSize: 25, color: Colors.grey.shade100),
                       ),
                       const SizedBox(
-                        height: 4,
+                        height: 9,
                       ),
                       Row(
                         children: List.generate(
@@ -171,12 +171,14 @@ class _DetailsShoesPageState extends State<DetailsShoesPage> {
                               setState(() {});
                             },
                             child: Container(
-                              margin: const EdgeInsets.only(right: 36),
-                              height: 30,
-                              width: 30,
+                              margin: const EdgeInsets.only(right: 6, left: 10),
+                              height: 40,
+                              width: 40,
                               decoration: BoxDecoration(
                                   color: widget.shoes.listImage[index].color,
-                                  shape: BoxShape.circle,
+                                  borderRadius: index == valueIndexColor
+                                      ? BorderRadius.circular(35)
+                                      : BorderRadius.circular(9),
                                   border: index == valueIndexColor
                                       ? Border.all(
                                           color: Colors.white, width: 2)
@@ -281,6 +283,9 @@ class _DetailsShoesPageState extends State<DetailsShoesPage> {
                                   );
                                 });
                               },
+                              borderRadius: valueIndexSize == index
+                                  ? BorderRadius.circular(90)
+                                  : BorderRadius.circular(15),
                               color: index == valueIndexSize
                                   ? widget
                                       .shoes.listImage[valueIndexColor].color

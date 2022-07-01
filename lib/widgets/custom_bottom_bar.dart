@@ -12,8 +12,9 @@ class CustomBottomBar extends StatelessWidget {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
       decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(40),
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(35),
+        border: Border.all(color: Colors.white, width: 2),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),

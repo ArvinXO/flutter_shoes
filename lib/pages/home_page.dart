@@ -202,7 +202,7 @@ class _HomePageShoesState extends State<HomePageShoes> {
           ),
 
           Container(
-            height: 80,
+            height: 100,
             padding: const EdgeInsets.all(20),
             child: CustomBottomBar(
               color: getColor(),
