@@ -65,7 +65,7 @@ class _HomePageShoesState extends State<HomePageShoes> {
           Container(
             decoration: curlBox,
             child: SizedBox(
-              height: 72,
+              height: 74,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: List.generate(
