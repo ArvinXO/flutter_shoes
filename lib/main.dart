@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shoes/pages/home_page.dart';
 
-import 'package:flutter/services.dart';
-
 // Run | Debug | Profile
 void main() => runApp(const MyApp());
 
