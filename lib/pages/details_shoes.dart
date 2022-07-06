@@ -32,6 +32,7 @@ class _DetailsShoesPageState extends State<DetailsShoesPage> {
 
   int valueIndexColor = 0;
   int valueIndexSize = 1;
+  bool isFavourite = false;
 
   double sizeShoes(int index, Size size) {
     switch (index) {
@@ -97,21 +98,69 @@ class _DetailsShoesPageState extends State<DetailsShoesPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CustomButton(
-                  onTap: () => {
-                    Navigator.pop(context),
-                  },
-                  child: const Icon(Icons.arrow_back_rounded),
-                  color: Colors.black,
+                // CustomButton(
+                //   onTap: () => {
+                //     Navigator.pop(context),
+                //   },
+                //   child: const Icon(Icons.arrow_back_rounded),
+                //   color: Colors.black,
+                // ),
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 400),
+                  height: size.height * 0.08,
+                  width: size.height * 0.08,
+                  decoration: const BoxDecoration(
+                    color: Colors.black,
+                    shape: BoxShape.circle,
+                  ),
+                  child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          //Pop the page
+                          Navigator.pop(context);
+                        });
+                      },
+                      child: const Icon(
+                        Icons.arrow_back,
+                      )),
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(15),
+                    color: isFavourite
+                        ? const Color.fromARGB(255, 0, 0, 0)
+                        : const Color.fromARGB(255, 0, 0, 0),
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.favorite_rounded),
+
+                  //Make favourite icon button that will be animated and contains state
+                  //create gestureDetector to detect the tap to remove the favourite
+                  //mAKE ICON  CHANGE WHEN TAPPED
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 400),
+                    height: size.height * 0.08,
+                    width: size.height * 0.08,
+                    decoration: BoxDecoration(
+                      color: isFavourite
+                          ? const Color.fromARGB(255, 0, 0, 0)
+                          : const Color.fromARGB(255, 0, 0, 0),
+                      shape: BoxShape.circle,
+                    ),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isFavourite = !isFavourite;
+                        });
+                      },
+                      child: Icon(
+                        isFavourite
+                            ? Icons.favorite
+                            : Icons.favorite_border_rounded,
+                        // color white if not favourite and black if favourite
+                        color: isFavourite
+                            ? const Color.fromARGB(255, 255, 0, 0)
+                            : const Color.fromARGB(255, 255, 255, 255),
+                      ),
+                    ),
                   ),
                 ),
               ],
