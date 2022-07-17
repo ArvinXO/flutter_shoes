@@ -1,9 +1,13 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_shoes/kconstants.dart';
 import 'package:flutter_shoes/models/data.dart';
 import 'package:flutter_shoes/pages/details_shoes.dart';
 import 'package:flutter_shoes/widgets/custom_app_bar.dart';
 import 'package:flutter_shoes/widgets/custom_bottom_bar.dart';
+
+import '../kconstants.dart';
 
 class HomePageShoes extends StatefulWidget {
   const HomePageShoes({Key? key}) : super(key: key);
@@ -63,6 +67,7 @@ class _HomePageShoesState extends State<HomePageShoes> {
         children: [
           const CustomAppBar(),
           Container(
+            height: MediaQuery.of(context).size.height * 0.049,
             decoration: curlBox,
             child: SizedBox(
               height: 79,
@@ -70,11 +75,14 @@ class _HomePageShoesState extends State<HomePageShoes> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: List.generate(
                   listCategory.length,
+                  //Wrap text in container with
                   (index) => Text(
                     listCategory[index],
                     style: index == indexPage
                         ? kTabText.copyWith(color: Colors.black)
-                        : kTabText.copyWith(color: Colors.grey),
+                        : kTabText.copyWith(
+                            color: kGreyColor,
+                          ),
                   ),
                 ),
               ),
@@ -106,95 +114,118 @@ class _HomePageShoesState extends State<HomePageShoes> {
                           index == indexPage ? 10 : 20,
                           0,
                         ),
-                        child: LayoutBuilder(builder: (context, constraints) {
-                          return AnimatedContainer(
-                            duration: const Duration(milliseconds: 250),
-                            margin: EdgeInsets.only(
-                              top: index == indexPage ? 10 : 100,
-                              bottom: 10,
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(36),
-                              color: Colors.white,
-                            ),
-                            child: Stack(
-                              clipBehavior: Clip.none,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 22, vertical: 22),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: [
-                                      Text(
-                                        shoes.category,
-                                        style: kShoeCategory,
-                                      ),
-                                      const SizedBox(
-                                        height: 4,
-                                      ),
-                                      Text(
-                                        shoes.name,
-                                        style: kShoeName,
-                                      ),
-                                      const SizedBox(
-                                        height: 4,
-                                      ),
-                                      Text(
-                                        shoes.price,
-                                        style: kShoePrice,
-                                      ),
-                                      FittedBox(
-                                        child: Text(
-                                          '${listTitle[0]} \n ${listTitle[1]}',
-                                          style: kSplitText,
-                                        ),
-                                      ),
+                        child: LayoutBuilder(
+                          builder: (context, constraints) {
+                            return BackdropFilter(
+                              filter: index > indexPage
+                                  ? ImageFilter.blur(sigmaX: 0, sigmaY: 0)
+                                  : ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                              child: AnimatedContainer(
+                                duration: const Duration(milliseconds: 250),
+                                margin: EdgeInsets.only(
+                                  top: index == indexPage ? 10 : 100,
+                                  bottom: 10,
+                                ),
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.white.withOpacity(0.1),
+                                      Colors.white.withOpacity(0.9),
                                     ],
+                                    begin: AlignmentDirectional.topStart,
+                                    end: AlignmentDirectional.bottomEnd,
+                                  ),
+                                  borderRadius: BorderRadius.circular(36),
+                                  border: Border.all(
+                                    width: 1.5,
+                                    color: Colors.white.withOpacity(0.2),
                                   ),
                                 ),
-                                Positioned(
-                                  top: constraints.maxHeight * 0.35,
-                                  left: constraints.maxWidth * 0.15,
-                                  right: -constraints.maxWidth * 0.13,
-                                  bottom: constraints.maxHeight * -0.09,
-                                  child: Hero(
-                                    tag: shoes.name,
-                                    child: Image(
-                                      image: AssetImage(
-                                        shoes.listImage[0].image,
+                                child: Stack(
+                                  clipBehavior: Clip.none,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 28, vertical: 22),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.stretch,
+                                        children: [
+                                          const SizedBox(
+                                            height: 2,
+                                          ),
+                                          Text(
+                                            shoes.name,
+                                            style: kShoeName.copyWith(
+                                                fontSize: 18),
+                                          ),
+                                          FittedBox(
+                                            child: Text(
+                                              '${listTitle[0]} \n ${listTitle[1]}',
+                                              style: kSplitText.copyWith(
+                                                color: Colors.black,
+                                                fontSize: 12,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                  ),
-                                ),
-                                Positioned(
-                                  bottom: 0,
-                                  right: 0,
-                                  child: Material(
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(86),
-                                      bottomRight: Radius.circular(36),
-                                    ),
-                                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                                    color: shoes.listImage[0].color,
-                                    child: InkWell(
-                                      onTap: () {},
-                                      child: const SizedBox(
-                                        height: 100,
-                                        width: 75,
-                                        child: Icon(
-                                          Icons.add,
-                                          size: 40,
+                                    Positioned(
+                                      top: constraints.maxHeight * 0.12,
+                                      left: constraints.maxWidth * 0.1,
+                                      right: -constraints.maxWidth * 0.09,
+                                      bottom: constraints.maxHeight * -0.09,
+                                      child: Hero(
+                                        tag: shoes.name,
+                                        child: Image(
+                                          image: AssetImage(
+                                            shoes.listImage[0].image,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
+                                    Positioned(
+                                      bottom: -3,
+                                      right: 3,
+                                      child: Row(
+                                        children: [
+                                          // indexShoeSizes[index]
+                                          for (int i = 0;
+                                              i < shoes.listImage.length;
+                                              i++)
+                                            Container(
+                                              width:
+                                                  constraints.maxWidth * 0.188,
+                                              height:
+                                                  constraints.maxHeight * 0.090,
+                                              decoration: BoxDecoration(
+                                                color: shoes.listImage[i].color,
+                                                borderRadius:
+                                                    //rounded rectangle if not the first colour
+                                                    i == 0
+                                                        ? kCircleBox
+                                                        : kSquircle,
+                                                border: i == 0
+                                                    ? Border.all(
+                                                        width: 2.5,
+                                                        color: Colors.white,
+                                                      )
+                                                    : Border.all(
+                                                        color: Colors.white
+                                                            .withOpacity(0.2),
+                                                      ),
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                          );
-                        }),
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ),
                   );

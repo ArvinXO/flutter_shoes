@@ -16,10 +16,15 @@ class Shoes {
     this.price,
     this.punctuation,
     this.listImage,
+    this.listSize,
+
+    //define listSize
   );
   final String name;
   final String category;
   final String price;
   final int punctuation;
   final List<ImageShoes> listImage;
+  //size
+  var listSize = [7, 8, 9, 10, 11, 12];
 }

@@ -3,11 +3,11 @@ import 'package:flutter_shoes/models/shoes.dart';
 
 final listCategory = ['Basketball', 'Running', 'Training'];
 
-final listShoes = [
+final List<Shoes> listShoes = [
   Shoes(
-    'AIR JORDAN 1 MID SE GC',
+    'AIR JORDAN 1 MID',
     'NIKE AIR',
-    '£120',
+    '120',
     4,
     [
       ImageShoes(
@@ -27,11 +27,12 @@ final listShoes = [
         const Color(0xff229954),
       ),
     ],
+    [7, 8, 9, 10, 11, 12],
   ),
   Shoes(
     'NIKE BLAZER MID',
     'NIKE AIR',
-    '£150',
+    '150',
     4,
     [
       ImageShoes(
@@ -51,11 +52,12 @@ final listShoes = [
         const Color(0xffAC501A),
       ), // ImageShoes
     ],
+    [7, 8, 9, 10, 11, 12],
   ),
   Shoes(
     'Zoomx Vaporfly',
     'NIKE ZOOM',
-    '£180',
+    '180',
     4,
     [
       ImageShoes(
@@ -75,5 +77,6 @@ final listShoes = [
         const Color(0xdc72e30e),
       ),
     ],
+    [7, 8, 9, 10, 11, 12],
   ),
 ]; // Shoes

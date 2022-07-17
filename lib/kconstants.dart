@@ -37,9 +37,31 @@ const kSplitText = TextStyle(
 );
 
 const curlBox = BoxDecoration(
+  color: Color.fromARGB(255, 247, 247, 247),
+  borderRadius: BorderRadius.only(
+    topLeft: Radius.circular(1),
+    bottomRight: Radius.circular(1),
+  ),
+);
+
+const kBottomBar = BoxDecoration(
   color: Colors.white,
   borderRadius: BorderRadius.only(
-    topLeft: Radius.circular(36),
-    bottomRight: Radius.circular(16),
+    topLeft: Radius.circular(40),
+    topRight: Radius.circular(40),
   ),
+);
+
+const kCircleBox = BorderRadius.only(
+  topLeft: Radius.circular(90),
+  topRight: Radius.circular(90),
+  bottomLeft: Radius.circular(90),
+  bottomRight: Radius.circular(90),
+);
+
+const kSquircle = BorderRadius.only(
+  topLeft: Radius.circular(20),
+  topRight: Radius.circular(20),
+  bottomLeft: Radius.circular(20),
+  bottomRight: Radius.circular(20),
 );

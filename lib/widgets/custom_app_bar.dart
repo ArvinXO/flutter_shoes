@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shoes/kconstants.dart';
 
 import '../pages/home_page.dart';
 
@@ -23,14 +24,15 @@ class CustomAppBar extends StatelessWidget {
             //Animated iCON
             AnimatedContainer(
               duration: const Duration(milliseconds: 200),
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
+              decoration: const BoxDecoration(
+                borderRadius: kSquircle,
               ),
               child: IconButton(
-                icon: Image.asset('assets/nike_w.png',
-                    height: 90, width: 90, fit: BoxFit.fill),
+                icon: Image.asset(
+                  'assets/nikee.png',
+                  height: 290,
+                  width: 290,
+                ),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -48,9 +50,9 @@ class CustomAppBar extends StatelessWidget {
                   duration: const Duration(milliseconds: 200),
                   height: 40,
                   width: 40,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: kCircleBox,
                   ),
                   child: const Icon(
                     Icons.menu,
@@ -63,9 +65,9 @@ class CustomAppBar extends StatelessWidget {
                   duration: const Duration(milliseconds: 200),
                   height: 40,
                   width: 40,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: kSquircle,
                   ),
                   child: const Icon(
                     Icons.shopping_bag_outlined,
